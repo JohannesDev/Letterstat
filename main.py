@@ -1,9 +1,9 @@
 import pygal
 
-
-class Letter:
-    symbol = 'A'
-    amount = 10
+class Letter(object):
+    def __init__(self, symbol, amount):
+        self.symbol = symbol
+        self.amount = amount
 
 def readArgv():
     pass
@@ -22,9 +22,11 @@ def showGraph(maxValues):
     print("started showGraph")
     chart = pygal.Bar()
     for i in range(len(maxValues)):
-        chart.add(maxValues.symbol, maxValues.amount)
+        chart.add(maxValues[i].symbol, maxValues[i].amount)
     chart.render_to_file('chart.svg')
 
 readArgv()
 readLetters("README.md", 10)
-showGraph(Letter('A', 10))
+
+highestLetters=  [Letter("A", 10),Letter("B", 5),Letter("C", 2)]
+showGraph(highestLetters)
