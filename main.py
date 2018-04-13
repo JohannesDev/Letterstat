@@ -1,3 +1,5 @@
+import pygal
+
 def readLetters():
     text = "Hello"
     list = [0] * 256
