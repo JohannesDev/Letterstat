@@ -4,7 +4,6 @@ import pygal
 class Letter:
     symbol = 'A'
     amount = 10
-    pass
 
 def readArgv():
     pass
