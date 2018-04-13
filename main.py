@@ -1,6 +1,9 @@
 import pygal
 
-def readLetters():
+
+def readArgv():
+    pass
+def readLetters(path, graphSize = 10):
     text = ""
     file = open ("README.md", "r")
     text = file.read()
@@ -17,5 +20,6 @@ def showGraph():
     chart.add('A', [20])  # Add some values
     chart.render_to_file('chart.svg')  # Write the chart in the specified file
 
+readArgv()
 readLetters()
 showGraph()
