@@ -13,7 +13,6 @@ def readLetters():
     list = [0] * 256
     for i in range(len(text)):
         list[ord(text[i])] += 1
-    print(list)
 
 def showGraph(maxValues):
     print("started showGraph")
