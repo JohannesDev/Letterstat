@@ -1,10 +1,12 @@
 import pygal
 
 
-class Letter(symbol, amount):
+class Letter:
+    symbol = 'A'
+    amount = 10
     pass
 
-def readArgv(): 
+def readArgv():
     pass
 
 def readLetters(path, graphSize = 10):
