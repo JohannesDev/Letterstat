@@ -26,4 +26,4 @@ def showGraph(maxValues):
 
 readArgv()
 readLetters("README.md", 10)
-showGraph(Letter())
+showGraph(Letter('A', 10))
