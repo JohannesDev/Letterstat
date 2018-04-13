@@ -1,5 +1,9 @@
 import pygal
 
+def readArgv():
+    pass
+def readLetters(path, graphSize = 10):
+
 class Letter(symbol, amount):
 
 def readLetters():
@@ -19,5 +23,6 @@ def showGraph(maxValues):
         chart.add(maxValues.symbol, maxValues.amount)
     chart.render_to_file('chart.svg')
 
+readArgv()
 readLetters()
 showGraph(Letter())
