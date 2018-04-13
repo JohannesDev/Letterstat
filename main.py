@@ -5,6 +5,7 @@ def readArgv():
 def readLetters(path, graphSize = 10):
 
 class Letter(symbol, amount):
+    pass
 
 def readLetters():
     text = ""
@@ -25,4 +26,4 @@ def showGraph(maxValues):
 
 readArgv()
 readLetters()
-showGraph(Letter())
+showGraph(Letter('A', 10))
