@@ -1,5 +1,9 @@
 import pygal
 
+class Letter():
+    symbol = ''
+    amount = 0
+
 def readLetters():
     text = ""
     file = open ("README.md", "r")
@@ -11,11 +15,12 @@ def readLetters():
         list[ord(text[i])] += 1
     print(list)
 
-def showGraph():
+def showGraph(maxValues):
     print("started showGraph")
-    chart = pygal.Bar()                                            # Then create a bar graph object#
-    chart.add('A', [20])  # Add some values
-    chart.render_to_file('chart.svg')  # Write the chart in the specified file
+    chart = pygal.Bar()
+    for i in range(len(maxValues)):
+        chart.add('A', [20])
+    chart.render_to_file('chart.svg')
 
 readLetters()
 showGraph()
