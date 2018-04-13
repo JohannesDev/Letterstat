@@ -1,8 +1,6 @@
 import pygal
 
-class Letter():
-    symbol = ''
-    amount = 0
+class Letter(symbol, amount):
 
 def readLetters():
     text = ""
@@ -18,8 +16,8 @@ def showGraph(maxValues):
     print("started showGraph")
     chart = pygal.Bar()
     for i in range(len(maxValues)):
-        chart.add('A', [20])
+        chart.add(maxValues.symbol, maxValues.amount)
     chart.render_to_file('chart.svg')
 
 readLetters()
-showGraph()
+showGraph(Letter())
