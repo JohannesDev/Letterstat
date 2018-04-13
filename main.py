@@ -1,14 +1,15 @@
 import pygal
 
-def readArgv():
-    pass
-def readLetters(path, graphSize = 10):
 
 class Letter(symbol, amount):
+    pass
 
-def readLetters():
+def readArgv(): 
+    pass
+
+def readLetters(path, graphSize = 10):
     text = ""
-    file = open ("README.md", "r")
+    file = open (path, "r")
     text = file.read()
     file.close
 
@@ -24,5 +25,5 @@ def showGraph(maxValues):
     chart.render_to_file('chart.svg')
 
 readArgv()
-readLetters()
+readLetters("README.md", 10)
 showGraph(Letter())
