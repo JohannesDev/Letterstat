@@ -1,8 +1,8 @@
+#highestLetters.append(Letter(random.choice(string.ascii_letters), random.randrange(100)))
+
 import pygal
 import sys, getopt
-
-#only for testing purposes, remove later
-import string, random
+from collections import Counter
 
 class Letter(object):
     def __init__(self, symbol, amount):
@@ -30,24 +30,19 @@ def readArgv(argv):
 
     return path,graphsize,outputfile
 
-
 def readLetters(path, graphsize):
+    graphsize = int(graphsize)
+
     text = ""
     file = open (path, "r")
     text = file.read()
     file.close
 
-    list = [0] * 256
-    for i in range(len(text)):
-        list[ord(text[i])] += 1
-
-    #test output
-    #Random char: random.choice(string.ascii_letters)
-    #Random number: random.randrange(100)
-    highestLetters=[]
-    for i in range(0,int(graphsize)):
-        highestLetters.append(Letter(random.choice(string.ascii_letters), random.randrange(100)))
-    return highestLetters
+    c = Counter(text).most_common(graphsize)
+    orderedLetters=[]
+    for i in range(0,graphsize):
+        orderedLetters.append(Letter(c[i][0],c[i][1]))
+    return orderedLetters
 
 def showGraph(maxValues, outputfile):
     print("started showGraph")
