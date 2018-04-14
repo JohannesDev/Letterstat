@@ -1,6 +1,9 @@
 import pygal
 import sys, getopt
 
+#only for testing purposes, remove later
+import string, random
+
 class Letter(object):
     def __init__(self, symbol, amount):
         self.symbol = symbol
@@ -28,7 +31,7 @@ def readArgv(argv):
     return path,graphsize,outputfile
 
 
-def readLetters(path, graphSize = 10):
+def readLetters(path, graphsize):
     text = ""
     file = open (path, "r")
     text = file.read()
@@ -39,7 +42,12 @@ def readLetters(path, graphSize = 10):
         list[ord(text[i])] += 1
 
     #test output
-    return [Letter("A", 10),Letter("B", 5),Letter("C", 2)]
+    #Random char: random.choice(string.ascii_letters)
+    #Random number: random.randrange(100)
+    highestLetters=[]
+    for i in range(0,int(graphsize)):
+        highestLetters.append(Letter(random.choice(string.ascii_letters), random.randrange(100)))
+    return highestLetters
 
 def showGraph(maxValues, outputfile):
     print("started showGraph")
@@ -48,9 +56,6 @@ def showGraph(maxValues, outputfile):
         chart.add(maxValues[i].symbol, maxValues[i].amount)
     if '.svg' in outputfile:
         chart.render_to_file(outputfile)
-    elif '.png' in outputfile:
-        #convert svg to png
-
 
 path, graphsize, outputfile = readArgv(sys.argv[1:])
 highestLetters = readLetters(path, graphsize)
