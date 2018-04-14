@@ -1,6 +1,6 @@
 # Letterstat
 
-Letterstat is a small python programm written to analyse the occurence of ASCII characters in a specific file. The results can be exported to an image file or vector graphic (.png or .svg).
+Letterstat is a small python programm written to analyse the occurence of ASCII characters in a specific file. The results can be exported to a vector graphic (.svg).
 ![Image of Letterstat](resources/letterstat.png)
 
 ## Installation
@@ -19,7 +19,7 @@ Letterstat is a small python programm written to analyse the occurence of ASCII 
  - There are optional parameters:
 	 - `-p <path to file>`
 	 - `-s <graph size>`
-	 - `-o <outputfile>`
+	 - `-o <output filename>`
 
 
 Example:

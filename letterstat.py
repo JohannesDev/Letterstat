@@ -1,8 +1,6 @@
 import pygal
 import sys, getopt
 from collections import Counter
-import cairo
-import rsvg
 
 class Letter(object):
     def __init__(self, symbol, amount):
