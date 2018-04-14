@@ -27,3 +27,4 @@ Example:
     python letterstat.py -p folder/file.txt -s 10 -o graph.svg
 
 ## Contributing
+If you find an error feel free to submit an issue or pull request
