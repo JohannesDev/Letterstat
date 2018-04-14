@@ -1,8 +1,8 @@
-#highestLetters.append(Letter(random.choice(string.ascii_letters), random.randrange(100)))
-
 import pygal
 import sys, getopt
 from collections import Counter
+import cairo
+import rsvg
 
 class Letter(object):
     def __init__(self, symbol, amount):
