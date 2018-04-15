@@ -26,14 +26,25 @@ def readArgv(argv):
     for opt, arg in opts:
         if opt == '-p':
             path = arg
+
         elif opt == '-s':
-            graphsize = arg
+            try:
+                graphsize = int(arg)
+            except ValueError:
+                print('Graphsize is not a number')
+                sys.exit(2)
+
         elif opt == '-o':
             outputfile = arg
+
         else: 
             print('Unknown argument: ' + str(opt))
             print(helpText)
             sys.exit(2)
+
+    if graphsize < 1:
+        print('Graphsize must be at least 1');
+        sys.exit(2)
 
     return path, graphsize, outputfile
 
