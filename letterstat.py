@@ -39,11 +39,17 @@ def readArgv(argv):
 # Open the file and analyse the input
 def readLetters(path, graphsize):
     graphsize = int(graphsize)
-
     text = ""
-    file = open (path, "r")
-    text = file.read()
-    file.close
+
+    try:
+        file = open (path, "r")
+        text = file.read()
+        file.close
+
+    except IOError:
+        print('Could not read file: ' + path)
+        sys.exit(2)
+
 
     # Delte whitespaces
     text = text.replace(" ", "")
