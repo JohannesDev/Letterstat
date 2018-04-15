@@ -50,8 +50,9 @@ def readLetters(path, graphsize):
     return orderedLetters
 
 # Create the .svg file
-def showGraph(maxValues, outputfile):
+def showGraph(maxValues, inputfile, outputfile):
     chart = pygal.Bar()
+    chart.title = 'Characters in ' + inputfile
     for i in range(len(maxValues)):
         chart.add(maxValues[i].symbol, maxValues[i].amount)
     if '.svg' in outputfile:
@@ -59,5 +60,5 @@ def showGraph(maxValues, outputfile):
 
 path, graphsize, outputfile = readArgv(sys.argv[1:])
 highestLetters = readLetters(path, graphsize)
-showGraph(highestLetters, outputfile)
+showGraph(highestLetters, path, outputfile)
 print('Created ' + str(outputfile) + ' from  ' + str(path) + ' sucessfully.')
