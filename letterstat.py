@@ -16,7 +16,8 @@ def readArgv(argv):
     helpText = 'Usage: main.py -p <path> -s <graphsize> -o <outputfile>'
 
     try:
-        opts, args = getopt.getopt(argv,"p:s:o:",["path=","graphsize=","outputfile="])
+        opts, args = getopt.getopt(argv,'p:s:o:',['path=','graphsize=',
+            'outputfile='])
     except getopt.GetoptError as err:
         print(err)
         print(helpText)
@@ -34,15 +35,15 @@ def readArgv(argv):
             print(helpText)
             sys.exit(2)
 
-    return path,graphsize,outputfile
+    return path, graphsize, outputfile
 
 # Open the file and analyse the input
 def readLetters(path, graphsize):
     graphsize = int(graphsize)
-    text = ""
+    text = ''
 
     try:
-        file = open (path, "r")
+        file = open (path, 'r')
         text = file.read()
         file.close
 
@@ -50,11 +51,10 @@ def readLetters(path, graphsize):
         print('Could not read file: ' + path)
         sys.exit(2)
 
-
     # Delte whitespaces
-    text = text.replace(" ", "")
-    text = text.replace("\t", "")
-    text = text.replace("\n", "")
+    text = text.replace(' ', '')
+    text = text.replace('\t', '')
+    text = text.replace('\n', '')
 
     c = Counter(text).most_common(graphsize)
     orderedLetters=[]
@@ -64,8 +64,9 @@ def readLetters(path, graphsize):
                 str(graphsize) + ' to ' + str(len(c)) + '.')
         graphsize = len(c)
 
-    for i in range(0,graphsize):
-        orderedLetters.append(Letter(c[i][0],c[i][1]))
+    for i in range(0, graphsize):
+        orderedLetters.append(Letter(c[i][0], c[i][1]))
+
     return orderedLetters
 
 # Create the .svg file
