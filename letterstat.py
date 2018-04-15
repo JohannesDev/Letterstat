@@ -38,6 +38,11 @@ def readLetters(path, graphsize):
     text = file.read()
     file.close
 
+    # Delte whitespaces
+    text = text.replace(" ", "")
+    text = text.replace("\t", "")
+    text = text.replace("\n", "")
+
     c = Counter(text).most_common(graphsize)
     orderedLetters=[]
     for i in range(0,graphsize):
