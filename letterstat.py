@@ -2,12 +2,13 @@ import pygal
 import sys, getopt
 from collections import Counter
 
+# Object to map every letter to a number
 class Letter(object):
     def __init__(self, symbol, amount):
         self.symbol = symbol
         self.amount = amount
 
-#loading custom inputs from user
+# Loading custom inputs from user
 def readArgv(argv):
     path = 'README.md'
     graphsize = 10
@@ -28,6 +29,7 @@ def readArgv(argv):
 
     return path,graphsize,outputfile
 
+# Open the file and analyse the input
 def readLetters(path, graphsize):
     graphsize = int(graphsize)
 
@@ -42,6 +44,7 @@ def readLetters(path, graphsize):
         orderedLetters.append(Letter(c[i][0],c[i][1]))
     return orderedLetters
 
+# Create the .svg file
 def showGraph(maxValues, outputfile):
     chart = pygal.Bar()
     for i in range(len(maxValues)):
