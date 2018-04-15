@@ -52,6 +52,12 @@ def readLetters(path, graphsize):
 
     c = Counter(text).most_common(graphsize)
     orderedLetters=[]
+
+    if len(c) < graphsize: 
+        print('Not enaught charcters in file. Reduced graphsize from ' + 
+                str(graphsize) + ' to ' + str(len(c)) + '.')
+        graphsize = len(c)
+
     for i in range(0,graphsize):
         orderedLetters.append(Letter(c[i][0],c[i][1]))
     return orderedLetters
