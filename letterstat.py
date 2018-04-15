@@ -13,12 +13,15 @@ def readArgv(argv):
     path = 'README.md'
     graphsize = 10
     outputfile = 'chart.svg'
+    helpText = 'Usage: main.py -p <path> -s <graphsize> -o <outputfile>'
 
     try:
         opts, args = getopt.getopt(argv,"p:s:o:",["path=","graphsize=","outputfile="])
-    except getopt.GetoptError:
-        print('main.py -p <path> -s <graphsize> -o <outputfile>')
+    except getopt.GetoptError as err:
+        print(err)
+        print(helpText)
         sys.exit(2)
+
     for opt, arg in opts:
         if opt == '-p':
             path = arg
@@ -26,6 +29,10 @@ def readArgv(argv):
             graphsize = arg
         elif opt == '-o':
             outputfile = arg
+        else: 
+            print('Unknown argument: ' + str(opt))
+            print(helpText)
+            sys.exit(2)
 
     return path,graphsize,outputfile
 
@@ -55,6 +62,7 @@ def showGraph(maxValues, inputfile, outputfile):
     chart.title = 'Characters in ' + inputfile
     for i in range(len(maxValues)):
         chart.add(maxValues[i].symbol, maxValues[i].amount)
+        
     if '.svg' in outputfile:
         chart.render_to_file(outputfile)
 
