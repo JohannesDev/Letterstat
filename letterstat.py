@@ -43,7 +43,6 @@ def readLetters(path, graphsize):
     return orderedLetters
 
 def showGraph(maxValues, outputfile):
-    print("started showGraph")
     chart = pygal.Bar()
     for i in range(len(maxValues)):
         chart.add(maxValues[i].symbol, maxValues[i].amount)
@@ -53,3 +52,4 @@ def showGraph(maxValues, outputfile):
 path, graphsize, outputfile = readArgv(sys.argv[1:])
 highestLetters = readLetters(path, graphsize)
 showGraph(highestLetters, outputfile)
+print('Created ' + str(outputfile) + ' from  ' + str(path) + ' sucessfully.')
