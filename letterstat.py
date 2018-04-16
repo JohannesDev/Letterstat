@@ -13,7 +13,7 @@ def readArgv(argv):
     inputfile = 'README.md'
     graphsize = 10
     outputfile = 'chart.svg'
-    helpText = 'Usage: main.py -p <inputfile> -s <graphsize> -o <outputfile>'
+    helpText = 'Usage: letterstat.py -i <inputfile> -s <graphsize> -o <outputfile>'
 
     try:
         opts, args = getopt.getopt(argv,'i:s:o:',['inputfile=','graphsize=',
@@ -55,7 +55,7 @@ def readLetters(inputfile, graphsize):
 
     try:
         file = open (inputfile, 'r')
-         text = file.read()
+        text = file.read()
         file.close
 
     except IOError:
@@ -91,7 +91,7 @@ def showGraph(maxValues, inputfile, outputfile):
         try:
             chart.render_to_file(outputfile)
         except IOError:
-            print('Could not write file: ' outputfile)
+            print('Could not write file: ', outputfile)
             sys.exit(2)
 
     else:
