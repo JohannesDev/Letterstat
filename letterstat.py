@@ -9,30 +9,30 @@ class Letter(object):
 
 #loading custom inputs from user
 def readArgv(argv):
-    path = 'README.md'
+    inputfile = 'README.md'
     graphsize = 10
     outputfile = 'chart.svg'
 
     try:
-        opts, args = getopt.getopt(argv,"p:s:o:",["path=","graphsize=","outputfile="])
+        opts, args = getopt.getopt(argv,"i:s:o:",["inputfile=","graphsize=","outputfile="])
     except getopt.GetoptError:
-        print('main.py -p <path> -s <graphsize> -o <outputfile>')
+        print('main.py -i <inputfile> -s <graphsize> -o <outputfile>')
         sys.exit(2)
     for opt, arg in opts:
-        if opt == '-p':
-            path = arg
+        if opt == '-i':
+            inputfile = arg
         elif opt == '-s':
             graphsize = arg
         elif opt == '-o':
             outputfile = arg
 
-    return path,graphsize,outputfile
+    return inputfile,graphsize,outputfile
 
-def readLetters(path, graphsize):
+def readLetters(inputfile, graphsize):
     graphsize = int(graphsize)
 
     text = ""
-    file = open (path, "r")
+    file = open (inputfile, "r")
     text = file.read()
     file.close
 
@@ -50,6 +50,6 @@ def showGraph(maxValues, outputfile):
     if '.svg' in outputfile:
         chart.render_to_file(outputfile)
 
-path, graphsize, outputfile = readArgv(sys.argv[1:])
-highestLetters = readLetters(path, graphsize)
+inputfile, graphsize, outputfile = readArgv(sys.argv[1:])
+highestLetters = readLetters(inputfile, graphsize)
 showGraph(highestLetters, outputfile)
