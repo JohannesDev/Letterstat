@@ -13,10 +13,10 @@ def readArgv(argv):
     inputfile = 'README.md'
     graphsize = 10
     outputfile = 'chart.svg'
-    helpText = 'Usage: main.py -p <path> -s <graphsize> -o <outputfile>'
+    helpText = 'Usage: main.py -p <inputfile> -s <graphsize> -o <outputfile>'
 
     try:
-        opts, args = getopt.getopt(argv,'p:s:o:',['path=','graphsize=',
+        opts, args = getopt.getopt(argv,'i:s:o:',['inputfile=','graphsize=',
             'outputfile='])
     except getopt.GetoptError as err:
         print(err)
@@ -24,8 +24,8 @@ def readArgv(argv):
         sys.exit(2)
 
     for opt, arg in opts:
-        if opt == '-p':
-            path = arg
+        if opt == '-i':
+            inputfile = arg
 
         elif opt == '-s':
             try:
@@ -46,20 +46,20 @@ def readArgv(argv):
         print('Graphsize must be at least 1');
         sys.exit(2)
 
-    return path, graphsize, outputfile
+    return inputfile, graphsize, outputfile
 
 # Open the file and analyse the input
-def readLetters(path, graphsize):
+def readLetters(inputfile, graphsize):
     graphsize = int(graphsize)
     text = ''
 
     try:
-        file = open (path, 'r')
+        file = open (inputfile, 'r')
          text = file.read()
         file.close
 
     except IOError:
-        print('Could not read file: ' + path)
+        print('Could not read file: ' + inputfile)
         sys.exit(2)
 
     # Delte whitespaces
@@ -98,7 +98,7 @@ def showGraph(maxValues, inputfile, outputfile):
         print("The output file must end with .svg")
         sys.exit(2)
 
-path, graphsize, outputfile = readArgv(sys.argv[1:])
-highestLetters = readLetters(path, graphsize)
-showGraph(highestLetters, path, outputfile)
-print('Created ' + str(outputfile) + ' from  ' + str(path) + ' sucessfully.')
+inputfile, graphsize, outputfile = readArgv(sys.argv[1:])
+highestLetters = readLetters(inputfile, graphsize)
+showGraph(highestLetters, inputfile, outputfile)
+print('Created ' + str(outputfile) + ' from  ' + str(inputfile) + ' sucessfully.')
