@@ -55,7 +55,7 @@ def readLetters(path, graphsize):
 
     try:
         file = open (path, 'r')
-         text = file.read()
+        text = file.read()
         file.close
 
     except IOError:
@@ -90,12 +90,13 @@ def showGraph(maxValues, inputfile, outputfile):
     if '.svg' in outputfile:
         try:
             chart.render_to_file(outputfile)
+
         except IOError:
-            print('Could not write file: ' outputfile)
+            print('Could not write file: ' + outputfile)
             sys.exit(2)
 
     else:
-        print("The output file must end with .svg")
+        print('The output file must end with .svg')
         sys.exit(2)
 
 path, graphsize, outputfile = readArgv(sys.argv[1:])
