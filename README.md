@@ -17,14 +17,14 @@ Letterstat is a small python programm written to analyse the occurence of ASCII 
  - To execute the program execute
   `python letterstat.py`
  - There are optional parameters:
-	 - `-p <path to file>`
+	 - `-i <input file path>`
 	 - `-s <graph size>`
 	 - `-o <output filename>`
 
 
 Example:
 
-    python letterstat.py -p folder/file.txt -s 10 -o graph.svg
+    python letterstat.py -i folder/file.txt -s 10 -o graph.svg
 
 ## Contributing
 If you find an error feel free to submit an issue or pull request

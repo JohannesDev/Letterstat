@@ -10,13 +10,13 @@ class Letter(object):
 
 # Loading custom inputs from user
 def readArgv(argv):
-    path = 'README.md'
+    inputfile = 'README.md'
     graphsize = 10
     outputfile = 'chart.svg'
-    helpText = 'Usage: main.py -p <path> -s <graphsize> -o <outputfile>'
+    helpText = 'Usage: letterstat.py -i <inputfile> -s <graphsize> -o <outputfile>'
 
     try:
-        opts, args = getopt.getopt(argv,'p:s:o:',['path=','graphsize=',
+        opts, args = getopt.getopt(argv,'i:s:o:',['inputfile=','graphsize=',
             'outputfile='])
     except getopt.GetoptError as err:
         print(err)
@@ -24,8 +24,8 @@ def readArgv(argv):
         sys.exit(2)
 
     for opt, arg in opts:
-        if opt == '-p':
-            path = arg
+        if opt == '-i':
+            inputfile = arg
 
         elif opt == '-s':
             try:
@@ -37,7 +37,7 @@ def readArgv(argv):
         elif opt == '-o':
             outputfile = arg
 
-        else: 
+        else:
             print('Unknown argument: ' + str(opt))
             print(helpText)
             sys.exit(2)
@@ -46,20 +46,24 @@ def readArgv(argv):
         print('Graphsize must be at least 1');
         sys.exit(2)
 
-    return path, graphsize, outputfile
+    return inputfile, graphsize, outputfile
 
 # Open the file and analyse the input
-def readLetters(path, graphsize):
+def readLetters(inputfile, graphsize):
     graphsize = int(graphsize)
     text = ''
 
     try:
+<<<<<<< HEAD
         file = open (path, 'r')
+=======
+        file = open (inputfile, 'r')
+>>>>>>> bb2468ac471a972d0bbb65cf65704e3374362e00
         text = file.read()
         file.close
 
     except IOError:
-        print('Could not read file: ' + path)
+        print('Could not read file: ' + inputfile)
         sys.exit(2)
 
     # Delte whitespaces
@@ -70,8 +74,8 @@ def readLetters(path, graphsize):
     c = Counter(text).most_common(graphsize)
     orderedLetters=[]
 
-    if len(c) < graphsize: 
-        print('Not enaught charcters in file. Reduced graphsize from ' + 
+    if len(c) < graphsize:
+        print('Not enaught charcters in file. Reduced graphsize from ' +
                 str(graphsize) + ' to ' + str(len(c)) + '.')
         graphsize = len(c)
 
@@ -86,20 +90,24 @@ def showGraph(maxValues, inputfile, outputfile):
     chart.title = 'Characters in ' + inputfile
     for i in range(len(maxValues)):
         chart.add(maxValues[i].symbol, maxValues[i].amount)
-        
+
     if '.svg' in outputfile:
         try:
             chart.render_to_file(outputfile)
 
         except IOError:
+<<<<<<< HEAD
             print('Could not write file: ' + outputfile)
+=======
+            print('Could not write file: ', outputfile)
+>>>>>>> bb2468ac471a972d0bbb65cf65704e3374362e00
             sys.exit(2)
 
     else:
         print('The output file must end with .svg')
         sys.exit(2)
 
-path, graphsize, outputfile = readArgv(sys.argv[1:])
-highestLetters = readLetters(path, graphsize)
-showGraph(highestLetters, path, outputfile)
-print('Created ' + str(outputfile) + ' from  ' + str(path) + ' sucessfully.')
+inputfile, graphsize, outputfile = readArgv(sys.argv[1:])
+highestLetters = readLetters(inputfile, graphsize)
+showGraph(highestLetters, inputfile, outputfile)
+print('Created ' + str(outputfile) + ' from  ' + str(inputfile) + ' sucessfully.')
