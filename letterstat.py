@@ -52,13 +52,8 @@ def readArgv(argv):
 def readLetters(inputfile, graphsize):
     graphsize = int(graphsize)
     text = ''
-
     try:
-<<<<<<< HEAD
-        file = open (path, 'r')
-=======
         file = open (inputfile, 'r')
->>>>>>> bb2468ac471a972d0bbb65cf65704e3374362e00
         text = file.read()
         file.close
 
@@ -96,11 +91,7 @@ def showGraph(maxValues, inputfile, outputfile):
             chart.render_to_file(outputfile)
 
         except IOError:
-<<<<<<< HEAD
             print('Could not write file: ' + outputfile)
-=======
-            print('Could not write file: ', outputfile)
->>>>>>> bb2468ac471a972d0bbb65cf65704e3374362e00
             sys.exit(2)
 
     else:
